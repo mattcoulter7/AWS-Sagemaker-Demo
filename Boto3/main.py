@@ -11,7 +11,7 @@ runtime= boto3.client('runtime.sagemaker',region_name=REGION_NAME,
 
 body=json.dumps({"inputs":[
     "The population of Singapore is 5.6 million people.</s>",
-    "The native Ehtnic group of Australia is the Aboriginals.</s>"
+    "The native Ethnic group of Australia is the Aboriginals.</s>"
 ]})
 
 response = runtime.invoke_endpoint(
