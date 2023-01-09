@@ -2,8 +2,10 @@ import json, os,boto3
 
 ACCESS_ID = os.getenv("ACCESS_ID")
 ACCESS_KEY = os.getenv("ACCESS_KEY")
+REGION_NAME = os.getenv("REGION_NAME")
+ENDPOINT_NAME = os.getenv("ENDPOINT_NAME")
 
-runtime= boto3.client('runtime.sagemaker',region_name="ap-northeast-1",
+runtime= boto3.client('runtime.sagemaker',region_name=REGION_NAME,
     aws_access_key_id=ACCESS_ID,
     aws_secret_access_key= ACCESS_KEY)
 
@@ -13,7 +15,7 @@ body=json.dumps({"inputs":[
 ]})
 
 response = runtime.invoke_endpoint(
-    EndpointName='huggingface-pytorch-inference-2023-01-09-06-08-46-264',
+    EndpointName=ENDPOINT_NAME,
     Body=body,
     ContentType='application/json',
 )
