@@ -1,0 +1,19 @@
+{
+    "awsRegion": "ap-northeast-1",
+    "eventTime": "2023-01-12T10:55:00.466Z",
+    "receivedTime": "2023-01-12T10:54:59.754Z",
+    "invocationStatus": "Completed",
+    "requestParameters": {
+        "contentType": "application/json",
+        "endpointName": "t5-base-qa-qg-hl-async",
+        "inputLocation": "s3://sagemaker-ap-northeast-1-774219246862/async_inference_input/t5-base-qa-qg-hl-async/5945fc49-e37e-4ced-9d92-8953e2d0761b.in"
+    },
+    "responseParameters": {
+        "contentType": "application/json",
+        "outputLocation": "s3://sagemaker-ap-northeast-1-774219246862/async_inference_output/t5-base-qa-qg-hl-async/00703c73-5c42-4f49-b9f2-8b7f288f922c.out"
+    },
+    "inferenceId": "2ed98649-8bec-481b-aff3-6499afbb1c50",
+    "eventVersion": "1.0",
+    "eventSource": "aws:sagemaker",
+    "eventName": "InferenceResult"
+}
