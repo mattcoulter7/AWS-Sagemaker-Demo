@@ -1,13 +1,8 @@
 import json, os,boto3
 
-ACCESS_ID = os.getenv("ACCESS_ID")
-ACCESS_KEY = os.getenv("ACCESS_KEY")
-REGION_NAME = os.getenv("REGION_NAME")
 ENDPOINT_NAME = os.getenv("ENDPOINT_NAME")
 
-runtime= boto3.client('runtime.sagemaker',region_name=REGION_NAME,
-    aws_access_key_id=ACCESS_ID,
-    aws_secret_access_key= ACCESS_KEY)
+runtime= boto3.client('runtime.sagemaker')
 
 body=json.dumps({"inputs":[
     "The population of Singapore is 5.6 million people.</s>",
