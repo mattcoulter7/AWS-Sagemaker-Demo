@@ -1,10 +1,14 @@
 import json, os,boto3,sagemaker,uuid
 from urllib.parse import urlparse
-from S3Utility import upload_file, download_file
+from utility.S3Utility import upload_file, download_file
+from flask import Blueprint
+
+question_processor_bp = Blueprint('question_processor', __name__)
 
 ENDPOINT_NAME_QA = os.getenv("ENDPOINT_NAME_QA")
 
 # PROCESS QUESTION MODEL OUPUTS -> QUESTION ANSWER MODEL INPUTS
+@question_processor_bp.route('/',methods=["POST"])
 def handle(message):
     # Connections
     s3_client = boto3.client("s3")
@@ -23,6 +27,7 @@ def handle(message):
     input_key = f'async_inference_input/{ENDPOINT_NAME_QA}/{str(uuid.uuid4())}.in'
 
     upload_file(s3_client,payload,s3_bucket,input_key)
+    return {}, 200
 
 def transform_output_to_input(output):
     inputs = []

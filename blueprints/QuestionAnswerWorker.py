@@ -1,7 +1,12 @@
-import json,boto3
-from ..main_async_q import download_file
+import json,boto3,os
+from flask import Blueprint
 
-# Receives Output from Question Model
+question_answer_bp = Blueprint('question_answer', __name__)
+
+ENDPOINT_NAME_QA = os.getenv("ENDPOINT_NAME_QA")
+
+# PROCESS QUESTION ANSWER MODEL INPUTS
+@question_answer_bp.route('/',methods=["POST"])
 def handle(message):
     runtime = boto3.client('runtime.sagemaker')
     
@@ -12,12 +17,16 @@ def handle(message):
         location = f's3://{bucket}/{key}'
 
         response = runtime.invoke_endpoint_async(
-            EndpointName='', # TODO Question Generation Endpoint Name
+            EndpointName=ENDPOINT_NAME_QA, 
             ContentType='application/json',
             InputLocation=location
         )
 
+        print(response)
+    
+    return {}, 200
+
 if __name__ == '__main__':
-    with open('./Boto3/EventDriven/SampleEvents/OutputNotification-S3.json', 'r') as data:
+    with open('./Boto3/EventDriven/SampleEvents/InputNotification-S3-QA.json', 'r') as data:
         obj = json.load(data)
         handle(obj)
