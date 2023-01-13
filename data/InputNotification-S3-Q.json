@@ -4,7 +4,7 @@
             "eventVersion": "2.1",
             "eventSource": "aws:s3",
             "awsRegion": "ap-southeast-1",
-            "eventTime": "2023-01-13T07:05:34.481Z",
+            "eventTime": "2023-01-13T07:12:43.008Z",
             "eventName": "ObjectCreated:Put",
             "userIdentity": {
                 "principalId": "AWS:AIDAZX2USEKBCESFW2VL4"
@@ -13,8 +13,8 @@
                 "sourceIPAddress": "194.223.131.166"
             },
             "responseElements": {
-                "x-amz-request-id": "F0DA3CNKNYNVT8E8",
-                "x-amz-id-2": "u6C73MAz9DACge383B9SwAIQe7yME1nSfsNXYfy6zqHmy7tfJHZDODN8NV2IP0klojZiZ0FEpyPUIL/bciuQFvXdE4d2QNU6"
+                "x-amz-request-id": "M1FQ3K8Y3BD0A9NP",
+                "x-amz-id-2": "81Z3pCi0PUTMNDEIOpJhU56gnJe885EYyepuETp5joUJgnbYMqIw6taa68Py6HT7Vmz25E5VoQUIgZq4vGnx/oNGunTdZ7an"
             },
             "s3": {
                 "s3SchemaVersion": "1.0",
@@ -30,7 +30,7 @@
                     "key": "async_inference_input/t5-base-qa-qg-qg-async/63be5aaec88789df50508a42.in",
                     "size": 368,
                     "eTag": "65579bce243c329f6a68dd5b71d93c81",
-                    "sequencer": "0063C102BE6CD4869A"
+                    "sequencer": "0063C1046AF2B14CAB"
                 }
             }
         }

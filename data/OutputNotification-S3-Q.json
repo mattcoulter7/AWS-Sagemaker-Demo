@@ -1,19 +1,38 @@
 {
-    "awsRegion": "ap-northeast-1",
-    "eventTime": "2023-01-12T10:38:02.672Z",
-    "receivedTime": "2023-01-12T10:38:01.281Z",
-    "invocationStatus": "Completed",
-    "requestParameters": {
-        "contentType": "application/json",
-        "endpointName": "t5-base-qa-qg-qg-async",
-        "inputLocation": "s3://sagemaker-ap-northeast-1-774219246862/async_inference_input/t5-base-qa-qg-qg-async/de461f06-3de5-46fb-b44e-69652764a88b.in"
-    },
-    "responseParameters": {
-        "contentType": "application/json",
-        "outputLocation": "s3://sagemaker-ap-northeast-1-774219246862/async_inference_output/t5-base-qa-qg-qg-async/f857475f-36ff-4fc0-acc6-c128ce9fa512.out"
-    },
-    "inferenceId": "c38628aa-af52-4550-b5d7-24ddf401a98a",
-    "eventVersion": "1.0",
-    "eventSource": "aws:sagemaker",
-    "eventName": "InferenceResult"
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "ap-southeast-1",
+            "eventTime": "2023-01-13T07:37:17.297Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "AWS:AIDAZX2USEKBCESFW2VL4"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "194.223.131.166"
+            },
+            "responseElements": {
+                "x-amz-request-id": "X69P1BKGB9CGCMCW",
+                "x-amz-id-2": "Ha6Hha6ogs6n0I5fy+O/1klDjqblTuO3tU8ajkq6nZK3kQFcGUcvns9alHQZBj6ySUY4Vvoo0ascgDeCUgWWpm3sGNhleUDy"
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "QuestionAnswerModelOnInput",
+                "bucket": {
+                    "name": "sagemaker-ap-southeast-1-669655376514",
+                    "ownerIdentity": {
+                        "principalId": "ABQBIQIWJC82U"
+                    },
+                    "arn": "arn:aws:s3:::sagemaker-ap-southeast-1-669655376514"
+                },
+                "object": {
+                    "key": "async_inference_input/t5-base-qa-qg-hl-async/63be5aaec88789df50508a42.in",
+                    "size": 130,
+                    "eTag": "b03395d9857b6e8d848da17616fd2620",
+                    "sequencer": "0063C10A2D3F6A75EB"
+                }
+            }
+        }
+    ]
 }
