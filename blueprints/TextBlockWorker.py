@@ -9,18 +9,21 @@ ENDPOINT_NAME_Q = os.getenv("ENDPOINT_NAME_Q")
 # PROCESS TEXT BLOCKS -> QUESTION MODEL INPUTS
 @text_block_bp.route('/',methods=["POST"])
 def handle():
-    body = json.loads(request.data)
-    # Connections
-    text_block_id = body['data']['payload']['text_block']['_id']
-    s3_client = boto3.client("s3")
-    sess = sagemaker.session.Session()
+    try:
+        body = json.loads(request.data)
+        # Connections
+        text_block_id = body['data']['payload']['text_block']['_id']
+        s3_client = boto3.client("s3")
+        sess = sagemaker.session.Session()
 
-    # upload the file
-    content = body['data']['payload']['text_block']['text']
-    payload = {"inputs": content}
-    s3_bucket = sess.default_bucket()
-    key = f'async_inference_input/{ENDPOINT_NAME_Q}/{text_block_id}.in'
+        # upload the file
+        content = body['data']['payload']['text_block']['text']
+        payload = {"inputs": content}
+        s3_bucket = sess.default_bucket()
+        key = f'async_inference_input/{ENDPOINT_NAME_Q}/{text_block_id}.in'
 
-    upload_file(s3_client,payload,s3_bucket,key)
+        upload_file(s3_client,payload,s3_bucket,key)
 
-    return {}, 200
+        return {}, 200
+    except Exception as e:
+        return repr(e), 400

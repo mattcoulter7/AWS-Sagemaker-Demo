@@ -9,24 +9,27 @@ ENDPOINT_NAME_QA = os.getenv("ENDPOINT_NAME_QA")
 # PROCESS QUESTION ANSWER MODEL INPUTS
 @question_answer_bp.route('/',methods=["POST"])
 def handle():
-    body = json.loads(request.data)
-    runtime = boto3.client('runtime.sagemaker')
-    
-    for record in body["Records"]:
-        bucket = record["s3"]["bucket"]["name"]
-        key = record["s3"]["object"]["key"]
-        text_block_id = Path(key).stem
-        location = f's3://{bucket}/{key}'
+    try:
+        body = json.loads(request.data)
+        runtime = boto3.client('runtime.sagemaker')
+        
+        for record in body["Records"]:
+            bucket = record["s3"]["bucket"]["name"]
+            key = record["s3"]["object"]["key"]
+            text_block_id = Path(key).stem
+            location = f's3://{bucket}/{key}'
 
-        response = runtime.invoke_endpoint_async(
-            EndpointName=ENDPOINT_NAME_QA, 
-            ContentType='application/json',
-            InputLocation=location,
-            CustomAttributes=json.dumps({
-                'text_block_id':text_block_id
-            })
-        )
+            response = runtime.invoke_endpoint_async(
+                EndpointName=ENDPOINT_NAME_QA, 
+                ContentType='application/json',
+                InputLocation=location,
+                CustomAttributes=json.dumps({
+                    'text_block_id':text_block_id
+                })
+            )
 
-        print(response)
-    
-    return {}, 200
+            print(response)
+        
+        return {}, 200
+    except Exception as e:
+        return repr(e), 400
